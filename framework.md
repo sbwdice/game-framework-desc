@@ -55,7 +55,7 @@
 	3.2安装php-cgi下载安装php，将php.ini.development或者php.ini-production改成php.ini  
 	
 	将error_reporting = E_ALL注释， 改为error_reporting = E_ERROR（减少错误输出），其他配置优化请熟悉再配置
-	启用php-cgi.exe 命令：  php-cgi.exe -b 127.0.0.1:9000 -c php.ini（cmd模式下，启动后不可关闭cmd窗口，关闭了php-cgi也关闭了）  
+	启用php-cgi.exe 命令：  php-cgi.exe -b 127.0.0.1:9000 -c php.ini（cmd模式下，启动后不可关闭cmd窗口否则php-cgi也关闭了）  
 	
 	3.3安装mysql配置游戏数据库，配置相关端口连接配置等等  
 	
