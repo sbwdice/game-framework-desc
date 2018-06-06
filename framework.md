@@ -1,11 +1,13 @@
 ##moblie game framework
 
 1.获取服务器列表流程  
+
       请求服列表信息					交给cgi处理请求                      返回服务器列表  
       
 client------------------>nginx server/apache server--------------------->cgi/fast-cgi------------------------->client  
   
 2.登录操作  
+
                 登录请求                        数据库验证                用户信息/角色信息    	.
 		
 	client------------------>login server --------------->dataaccess-------------------->login server   
