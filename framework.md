@@ -2,13 +2,13 @@
 
 1.获取服务器列表流程  
 
-         请求服列表信息								   交给cgi处理请求                      返回服务器列表  
+      请求服列表信息					交给cgi处理请求                      返回服务器列表  
 		 
   client------------------>nginx server/apache server--------------------->cgi/fast-cgi------------------------->client  
   
 2.登录操作  
 
-          登录请求                        数据库验证                用户信息/角色信息    
+                登录请求                        数据库验证                用户信息/角色信息    
 		  
 	client------------------>login server --------------->dataaccess-------------------->login server   
 	
@@ -23,33 +23,33 @@
 		配置例子：
 >		server
 		{
-				listen       端口;
-				server_name  ip;
-				root D:/game_htdocs（网站目录/php目录）;
-				index index.html index.htm index.php;  
-				
-				location ~ .*\.(php|php5)?$		//所有php请求交给 127.0.0.1:9000 的fastcgi处理  
-				{
-					include fastcgi.conf;
-					fastcgi_pass 127.0.0.1:9000;
-					fastcgi_index index.php;
-				}
+			listen       端口;
+			server_name  ip;
+			root D:/game_htdocs（网站目录/php目录）;
+			index index.html index.htm index.php;  
+			
+			location ~ .*\.(php|php5)?$		//所有php请求交给 127.0.0.1:9000 的fastcgi处理  
+			{
+				include fastcgi.conf;
+				fastcgi_pass 127.0.0.1:9000;
+				fastcgi_index index.php;
+			}
 		
-				location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
-				{
-					expires      30d;
-				}
+			location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+			{
+				expires      30d;
+			}
 		
-				location ~ .*\.(js|css)?$
-				{
-					expires      1h;
-				}
+			location ~ .*\.(js|css)?$
+			{
+				expires      1h;
+			}
+	
+			location / {
+				try_files $uri $uri/ /$uri.php$is_args$args;
+			}
 		
-				location / {
-					try_files $uri $uri/ /$uri.php$is_args$args;
-				}
-		
-				access_log off;
+			access_log off;
 		}
 
 	3.2安装php-cgi下载安装php，将php.ini.development或者php.ini-production改成php.ini  
